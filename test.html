@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test the LightWindCSS</title>
+    <script src="/index.js" data-lightwindsrc="/lightTheme.json"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding: 40px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        * {
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+
+    <script>
+        window.onload = () => {
+            document.getElementById('addHeadScript').classList.add('color>blue')
+            document.getElementById('delHeadScript').classList.remove('color>blue')
+        }
+    </script>
+    <script type="module">
+        document.getElementById('addHeadScriptModule').classList.add('color>green')
+        document.getElementById('delHeadScriptModule').classList.remove('color>green')
+    </script>
+</head>
+
+<body>
+    <h1>Lightwind test</h1>
+    <p>Lightwind page to test all the dynamic and static features</p>
+    <hr>
+    <div>
+        <h2>Classes at HTML generation</h2>
+        <p class="color>red">has .color>red</p>
+
+        <hr>
+
+        <h2>Appending and deleting class from head script</h2>
+        <p id="addHeadScript">add .color>blue</p>
+        <p id="delHeadScript" class="color>blue">remove .color>blue</p>
+
+        <hr>
+
+        <h2>Appending and deleting class from head module script</h2>
+        <p id="addHeadScriptModule">add .color>green</p>
+        <p id="delHeadScriptModule" class="color>green">remove .color>green</p>
+
+        <hr>
+
+        <h2>Appending and deleting class from body script</h2>
+        <p id="addBodyScript">add .color>pink</p>
+        <p id="delBodyScript" class="color>pink">remove .color>pink</p>
+
+        <hr>
+
+        <h2>Appending and deleting class from body module script</h2>
+        <p id="addBodyScriptModule">add .color>cyan</p>
+        <p id="delBodyScriptModule" class="color>cyan">remove .color>cyan</p>
+
+        <hr>
+
+        <h2>Selectors</h2>
+        <p class="hvr:color>red cursor>pointer">Red on hover</p>
+
+        <hr>
+
+        <h2>Pseudo classes</h2>
+        <p class="before:content>'before_element_even_with_spaces'">content</p>
+
+        <hr>
+
+        <h2>Media queries</h2>
+        <i>Be careful about the queries order</i>
+        <p class="color>black md:color>green sm:color>red">.color>black .md:color>green .sm:color>red</p>
+    </div>
+
+    <script>
+        document.getElementById('addBodyScript').classList.add('color>pink')
+        document.getElementById('delBodyScript').classList.remove('color>pink')
+    </script>
+    <script type="module">
+        document.getElementById('addBodyScriptModule').classList.add('color>cyan')
+        document.getElementById('delBodyScriptModule').classList.remove('color>cyan')
+    </script>
+</body>
+
+</html>
