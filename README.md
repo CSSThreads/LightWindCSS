@@ -1,0 +1,2 @@
+# LightWindCSS
+like Tailwind
