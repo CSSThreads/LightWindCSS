@@ -16,6 +16,8 @@
             classSubParams.shift();
         }
 
+        console.log(classSubParams)
+
         for (i in classSubParams) {
             if (i == classSubParams.length - 1) {
                 if (i == 0)
@@ -26,30 +28,25 @@
                 if (value)
                     value = value.replaceAll('_', ' ');
 
-                try {
-                    styleLightWind.textContent += `{`
-                    if (typeof (value) == 'undefined') {
-                        // value only
-                        styleLightWind.textContent += `${res.proprieties.valueOnly[name].css}}`
-                    }
-                    else {
-                        try {
-                            res.proprieties.valueKey[name].propriety.forEach(prop => {
-                                styleLightWind.textContent += `${prop}:${typeof (res.values[res.proprieties.valueKey[name].valuesDefault][value]) == 'undefined' ? value : res.values[res.proprieties.valueKey[name].valuesDefault][value]};`
-                            });
-
-                            styleLightWind.textContent += `}`
-                        }
-                        catch {
-                            res.proprieties.valueKey[name].propriety.forEach(prop => {
+                styleLightWind.textContent += `{`
+                if (!value) {
+                    // value only
+                    styleLightWind.textContent += `${res.proprieties.valueOnly[name].css}}`
+                }
+                else {
+                    if (name in res.proprieties.valueKey) {
+                        res.proprieties.valueKey[name].propriety.forEach(prop => {
+                            if (res.values[res.proprieties.valueKey[name].valuesDefault])
+                                styleLightWind.textContent += `${prop}:${!(value in res.values[res.proprieties.valueKey[name].valuesDefault]) ? value : res.values[res.proprieties.valueKey[name].valuesDefault][value]};`
+                            else 
                                 styleLightWind.textContent += `${prop}:${value};`
-                            });
+                        });
 
-                            styleLightWind.textContent += `}`
-                        }
+                        styleLightWind.textContent += `}`
+                    } 
+                    else {
+                        styleLightWind.textContent += `${name}:${value};}`
                     }
-                } catch {
-                    styleLightWind.textContent += `${name}:${value};}`
                 }
 
                 if (screenBreakPointOpen)
@@ -57,7 +54,7 @@
             }
             else if (i == 0) {
                 // screen + selector
-                try {
+                if (classSubParams[i] in res.screens) {
                     // screen
                     if (res.screens[classSubParams[i]].min != null && res.screens[classSubParams[i]].max != null)
                         styleLightWind.textContent += `@media screen and (min-width: ${res.screens[classSubParams[i]].min}) and (max-width: ${res.screens[classSubParams[i]].max}) {`
@@ -69,7 +66,7 @@
                     styleLightWind.textContent += `${dark}.${className.replaceAll(/\#/g, '\\#').replaceAll(/\:/g, '\\:').replaceAll(/\[/g, '\\[').replaceAll(/\]/g, '\\]').replaceAll(/\>/g, '\\>').replaceAll(/\//g, '\\/').replaceAll(/\(/g, '\\(').replaceAll(/\)/g, '\\)').replaceAll(/\%/g, '\\%').replaceAll(/\-/g, '\\-').replaceAll(/\+/g, '\\+').replaceAll(/\*/g, '\\*').replaceAll(/\,/g, '\\,').replaceAll(/\|/g, '\\|').replaceAll(/\'/g, '\\\'')}`
                     screenBreakPointOpen = true
                 }
-                catch {
+                else {
                     // selector
                     styleLightWind.textContent += `${dark}.${className.replaceAll(/\#/g, '\\#').replaceAll(/\:/g, '\\:').replaceAll(/\[/g, '\\[').replaceAll(/\]/g, '\\]').replaceAll(/\>/g, '\\>').replaceAll(/\//g, '\\/').replaceAll(/\(/g, '\\(').replaceAll(/\)/g, '\\)').replaceAll(/\%/g, '\\%').replaceAll(/\-/g, '\\-').replaceAll(/\+/g, '\\+').replaceAll(/\*/g, '\\*').replaceAll(/\,/g, '\\,').replaceAll(/\|/g, '\\|').replaceAll(/\'/g, '\\\'')}`
                     try {
