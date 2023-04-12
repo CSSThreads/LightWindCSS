@@ -22,7 +22,7 @@ The config file is devided into 5 sections:
         "<name>": { "css": "<css_content>" },
       },
       "valueKey": {
-        "<name>": { "propriety": ["<prop_name>"], "valuesDefault": "<name_of_value_shortcut|null>", "valuesDark": "<name_of_value_shortcut|null>" }
+        "<name>": { "propriety": ["<prop_name>"], "valuesDefault": "<name_of_value_shortcut|null>" }
       }
     }
 }

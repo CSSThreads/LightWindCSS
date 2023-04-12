@@ -31,15 +31,11 @@
                     if (typeof (value) == 'undefined') {
                         // value only
                         styleLightWind.textContent += `${res.proprieties.valueOnly[name].css}}`
-                        console.log('ll')
                     }
                     else {
                         try {
                             res.proprieties.valueKey[name].propriety.forEach(prop => {
-                                if (dark == '')
-                                    styleLightWind.textContent += `${prop}:${typeof (res.values[res.proprieties.valueKey[name].valuesDefault][value]) == 'undefined' ? value : res.values[res.proprieties.valueKey[name].valuesDefault][value]};`
-                                else
-                                    styleLightWind.textContent += `${prop}:${typeof (res.values[res.proprieties.valueKey[name].valuesDark][value]) == 'undefined' ? value : res.values[res.proprieties.valueKey[name].valuesDark][value]};`
+                                styleLightWind.textContent += `${prop}:${typeof (res.values[res.proprieties.valueKey[name].valuesDefault][value]) == 'undefined' ? value : res.values[res.proprieties.valueKey[name].valuesDefault][value]};`
                             });
 
                             styleLightWind.textContent += `}`
