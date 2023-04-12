@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test the LightWindCSS</title>
-    <script src="/index.js" data-lightwindsrc="/lightTheme.json"></script>
+    <script src="../src/index.js" data-lightwindsrc="../src/lightTheme.json"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    <h1>Lightwind test</h1>
+    <h1>LightwindCSS test</h1>
     <p>Lightwind page to test all the dynamic and static features</p>
     <hr>
     <div>
@@ -70,23 +70,60 @@
         <hr>
 
         <h2>Selectors</h2>
-        <p class="hvr:color>red cursor>pointer">Red on hover</p>
+        <p class="hvr:color>red cursor>pointer">hvr:color>red</p>
 
         <hr>
 
         <h2>Pseudo classes</h2>
-        <p class="before:content>'before_element_even_with_spaces'">content</p>
+        <p class="before:content>'before_element_even_with_spaces'"> <b>(before:content>'before_element_even_with_spaces')</b></p>
 
         <hr>
 
         <h2>Media queries</h2>
         <i>Be careful about the queries order</i>
         <p class="color>black md:color>green sm:color>red">.color>black .md:color>green .sm:color>red</p>
+
+        <hr>
+
+        <h2>Only value class</h2>
+        <p class="text-3xl">text-3xl</p>
+
+        <hr>
+
+        <h2>Usage of a default value</h2>
+        <p class="pt>7">pt>7</p>
+
+        <hr>
+
+        <h2>Multi key properties</h2>
+        <p class="py>20px">py>20px</p>
+
+        <hr>
+
+        <h2>Hover pseudo class</h2>
+        <p class="before:content>'red_on_hover' hover:before:color>red"> <b>(hover:before:color>red)</b></p>
+
+        <hr>
+
+        <h2>Append element</h2>
+        <div id="appendelement"></div>
+
+        <hr>
+
+        <h2>Set innerHTML</h2>
+        <div id="innerhtml"></div>
     </div>
 
     <script>
         document.getElementById('addBodyScript').classList.add('color>pink')
         document.getElementById('delBodyScript').classList.remove('color>pink')
+
+        let el = document.createElement('p')
+        el.classList.add('color>red')
+        el.innerText = 'append a red text'
+        document.querySelector('#appendelement').appendChild(el)
+
+        document.querySelector('#innerhtml').innerHTML = '<p class="color>blue">set innerHTML with a red text</p>'
     </script>
     <script type="module">
         document.getElementById('addBodyScriptModule').classList.add('color>cyan')

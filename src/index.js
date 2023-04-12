@@ -21,12 +21,17 @@
                 if (i == 0)
                     styleLightWind.textContent += `${dark}.${className.replaceAll(/\#/g, '\\#').replaceAll(/\:/g, '\\:').replaceAll(/\[/g, '\\[').replaceAll(/\]/g, '\\]').replaceAll(/\>/g, '\\>').replaceAll(/\//g, '\\/').replaceAll(/\(/g, '\\(').replaceAll(/\)/g, '\\)').replaceAll(/\%/g, '\\%').replaceAll(/\-/g, '\\-').replaceAll(/\+/g, '\\+').replaceAll(/\*/g, '\\*').replaceAll(/\,/g, '\\,').replaceAll(/\|/g, '\\|').replaceAll(/\'/g, '\\\'')}`
                 // value
-                let name = classSubParams[i].split('>')[0], value = classSubParams[i].split('>')[1].replaceAll(/_/g, ' ')
+                let name = classSubParams[i].split('>')[0], value = classSubParams[i].split('>')[1]
+                
+                if (value)
+                    value = value.replaceAll('_', ' ');
+
                 try {
                     styleLightWind.textContent += `{`
                     if (typeof (value) == 'undefined') {
                         // value only
                         styleLightWind.textContent += `${res.proprieties.valueOnly[name].css}}`
+                        console.log('ll')
                     }
                     else {
                         try {
