@@ -1,6 +1,6 @@
 # LightWindCSS
 
-*LightWindCSS, is a css class based library for dynamic class generator based on a json config file.*
+*LightWindCSS, is a css class based library for dynamic class generator*
 
 ## Config file
 
